@@ -5,3 +5,5 @@ Szia
 Sziasztok
 
 Helloka
+
+Új üzenet
