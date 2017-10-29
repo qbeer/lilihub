@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5f1f7a7-32e2-44ca-afa7-ee2e5b76dc7d" name="Default" comment="Updated with the suggestions">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../test1.txt" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../testfile.txt.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/exception/InvalidISBNException.java" afterPath="$PROJECT_DIR$/src/exception/InvalidIsbnException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bookstore/exception/InvalidAuthorException.class" afterPath="$PROJECT_DIR$/out/production/bookstore/exception/InvalidAuthorException.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bookstore/exception/InvalidISBNException.class" afterPath="$PROJECT_DIR$/out/production/bookstore/exception/InvalidISBNException.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bookstore/exception/NoAuthorException.class" afterPath="$PROJECT_DIR$/out/production/bookstore/exception/NoAuthorException.class" />
@@ -21,22 +19,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bookstore/store/FileBookStore.class" afterPath="$PROJECT_DIR$/out/production/bookstore/store/FileBookStore.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bookstore/store/layer/AuthorStore.class" afterPath="$PROJECT_DIR$/out/production/bookstore/store/layer/AuthorStore.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bookstore/store/layer/BookStore.class" afterPath="$PROJECT_DIR$/out/production/bookstore/store/layer/BookStore.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/exception/InvalidAuthorException.java" afterPath="$PROJECT_DIR$/src/exception/InvalidAuthorException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/exception/NoAuthorException.java" afterPath="$PROJECT_DIR$/src/exception/NoAuthorException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/exception/NoBookException.java" afterPath="$PROJECT_DIR$/src/exception/NoBookException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Main.java" afterPath="$PROJECT_DIR$/src/main/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Author.java" afterPath="$PROJECT_DIR$/src/model/Author.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Book.java" afterPath="$PROJECT_DIR$/src/model/Book.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service/MainAuthorService.java" afterPath="$PROJECT_DIR$/src/service/MainAuthorService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service/MainBookService.java" afterPath="$PROJECT_DIR$/src/service/MainBookService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service/layer/AuthorService.java" afterPath="$PROJECT_DIR$/src/service/layer/AuthorService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service/layer/BookService.java" afterPath="$PROJECT_DIR$/src/service/layer/BookService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/FileAuthorStore.java" afterPath="$PROJECT_DIR$/src/store/FileAuthorStore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/FileBookStore.java" afterPath="$PROJECT_DIR$/src/store/FileBookStore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/layer/AuthorStore.java" afterPath="$PROJECT_DIR$/src/store/layer/AuthorStore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/layer/BookStore.java" afterPath="$PROJECT_DIR$/src/store/layer/BookStore.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,8 +63,8 @@
       <file leaf-file-name="FileBookStore.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/store/FileBookStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+            <state relative-caret-position="304">
+              <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -347,11 +330,18 @@
       <option name="presentableId" value="Default" />
       <updated>1509303950049</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated with the suggestions">
+      <created>1509307438575</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1509307438575</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -359,20 +349,20 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5028612" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.49713877" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25751072" sideWeight="0.49462366" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25751072" sideWeight="0.49369368" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39895698" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25751072" sideWeight="0.50537634" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25751072" sideWeight="0.5063063" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -515,8 +505,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/FileBookStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        <state relative-caret-position="304">
+          <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
           <folding />
         </state>
       </provider>
