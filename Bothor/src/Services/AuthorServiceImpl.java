@@ -1,21 +1,23 @@
+package Services;
+
+import Exceptions.InvalidIdException;
+import Exceptions.NoAuthorByIdException;
+import Store.Author;
+import Store.AuthorStore;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AuthorServiceImpl implements AuthorService{
 
-    private String srcDir;
-    private static AuthorServiceImpl INSTANCE;
+    private final String srcDir;
+    private final AuthorStore store;
 
-    private AuthorServiceImpl(String srcDir){
+
+    public AuthorServiceImpl(String srcDir){
         this.srcDir = srcDir;
-    }
-
-    public static AuthorServiceImpl getInstance(String srcDir){
-        if(INSTANCE == null){
-            INSTANCE = new AuthorServiceImpl(srcDir);
-        }
-        return INSTANCE;
+        store = new FileAuthorStore(srcDir);
     }
 
     @Override
@@ -24,7 +26,7 @@ public class AuthorServiceImpl implements AuthorService{
         File[] files = new File(srcDir+"/authors").listFiles();
         for(File file : files){
             if(file.isDirectory()){
-                authors.add(FileAuthorStore.getInstance(srcDir).getAuthorById(Integer.parseInt(file.getName())));
+                authors.add(store.getAuthorById(Integer.parseInt(file.getName())));
             }
         }
         Author[] authorArr = new Author[authors.size()];
@@ -33,13 +35,13 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     @Override
-    public void addAuthor(Author a) throws InvalidIdException {
-        FileAuthorStore.getInstance(srcDir).addAuthor(a);
+    public void addAuthor(Author newAuthor) throws InvalidIdException {
+        store.addAuthor(newAuthor);
     }
 
     @Override
     public Author getAuthorById(int id) throws NoAuthorByIdException {
-        return FileAuthorStore.getInstance(srcDir).getAuthorById(id);
+        return store.getAuthorById(id);
     }
 
 }

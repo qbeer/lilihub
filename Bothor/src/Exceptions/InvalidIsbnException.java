@@ -1,3 +1,5 @@
+package Exceptions;
+
 public class InvalidIsbnException extends Exception {
 
     public InvalidIsbnException() {

@@ -1,3 +1,5 @@
+package Exceptions;
+
 public class NoAuthorByIdException extends Exception {
 
     public NoAuthorByIdException() {

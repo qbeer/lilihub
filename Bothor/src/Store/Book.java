@@ -1,11 +1,10 @@
+package Store;
+
 public class Book {
 
     private String isbn;
     private String title;
     private int authorId;
-
-    public Book() {
-    }
 
     public Book(String isbn, String title, int authorId) {
         this.isbn = isbn;
@@ -39,7 +38,7 @@ public class Book {
 
     @Override
     public String toString(){
-        return String.format("Book[Title = %s, Author's id = %d, ISBN = %s]",title,authorId,isbn);
+        return String.format("Store.Book[Title = %s, Store.Author's id = %d, ISBN = %s]",title,authorId,isbn);
     }
 
 }

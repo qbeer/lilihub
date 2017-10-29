@@ -1,21 +1,23 @@
+package Services;
+
+import Exceptions.InvalidIsbnException;
+import Exceptions.NoBookByIsbnException;
+import Store.Book;
+import Store.BookStore;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookServiceImpl implements BookService {
 
-    private String srcDir;
-    private static BookServiceImpl INSTANCE;
+    private final String srcDir;
+    private final BookStore store;
 
-    private BookServiceImpl(String srcDir){
+    public BookServiceImpl(String srcDir){
         this.srcDir = srcDir;
-    }
+        store = new FileBookStore(srcDir);
 
-    public static BookServiceImpl getInstance(String srcDir){
-        if(INSTANCE == null){
-            INSTANCE = new BookServiceImpl(srcDir);
-        }
-        return INSTANCE;
     }
 
     @Override
@@ -24,7 +26,7 @@ public class BookServiceImpl implements BookService {
         File[] files = new File(srcDir+"/books/").listFiles();
         for(File file : files){
             if(file.isDirectory()){
-                books.add(FileBookStore.getInstance(srcDir).getBookByIsbn(file.getName()));
+                books.add(store.getBookByIsbn(file.getName()));
             }
         }
         Book[] booksArr = new Book[books.size()];
@@ -33,13 +35,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void addBook(Book b) throws InvalidIsbnException {
-        FileBookStore.getInstance(srcDir).addBook(b);
+    public void addBook(Book newBook) throws InvalidIsbnException {
+        store.addBook(newBook);
     }
 
     @Override
     public Book getBookByIsbn(String isbn) throws NoBookByIsbnException {
-        return FileBookStore.getInstance(srcDir).getBookByIsbn(isbn);
+        return store.getBookByIsbn(isbn);
     }
 
 }

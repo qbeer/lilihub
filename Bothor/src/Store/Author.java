@@ -1,18 +1,20 @@
+package Store;
+
 public class Author {
 
     private int id;
     private String firstName;
     private String lastName;
-    private int birthyear;
+    private int birthYear;
 
     public Author() {
     }
 
-    public Author(int id, String firstName, String lastName, int birthyear) {
+    public Author(int id, String firstName, String lastName, int birthYear) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthyear = birthyear;
+        this.birthYear = birthYear;
     }
 
     public int getId() {
@@ -40,15 +42,15 @@ public class Author {
     }
 
     public int getBirthyear() {
-        return birthyear;
+        return birthYear;
     }
 
     public void setBirthyear(int birthyear) {
-        this.birthyear = birthyear;
+        this.birthYear = birthyear;
     }
 
     @Override
     public String toString(){
-        return String.format("Author[Name = %s %s, Id = %d, Year of birth = %d]",firstName,lastName,id,birthyear);
+        return String.format("Store.Author[Name = %s %s, Id = %d, Year of birth = %d]",firstName,lastName,id,birthYear);
     }
 }

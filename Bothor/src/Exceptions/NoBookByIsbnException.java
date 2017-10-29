@@ -1,3 +1,5 @@
+package Exceptions;
+
 public class NoBookByIsbnException extends Exception {
     public NoBookByIsbnException() {
         super();
