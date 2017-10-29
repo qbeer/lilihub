@@ -1,10 +1,9 @@
 package exception;
 
-public class NoBookException extends Exception {
+public class InvalidIsbnException extends Exception {
     private String isbn;
 
-    public NoBookException() {}
-    public NoBookException(String isbn) {
+    public InvalidIsbnException(String isbn) {
         this.isbn = isbn;
     }
 

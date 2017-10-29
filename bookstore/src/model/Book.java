@@ -2,29 +2,29 @@ package model;
 
 public class Book {
     private String title;
-    private String ISBN;
-    private int authorID;
+    private String isbn;
+    private int authorId;
 
-    public Book(String title, String ISBN, int authorID) {
+    public Book(String title, String isbn, int authorId) {
         this.title = title;
-        this.ISBN = ISBN;
-        this.authorID = authorID;
+        this.isbn = isbn;
+        this.authorId = authorId;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public int getAuthorID() {
-        return authorID;
+    public int getAuthorId() {
+        return authorId;
     }
 
     @Override
     public String toString() {
-        return "[" + this.title + ", " + this.ISBN + ", " + this.authorID + "]";
+        return "[" + this.title + ", " + this.isbn + ", " + this.authorId + "]";
     }
 }

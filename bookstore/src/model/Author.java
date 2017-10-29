@@ -1,20 +1,20 @@
 package model;
 
 public class Author {
-    private int ID;
+    private int id;
     private String firstName;
     private String lastName;
     private int birthYear;
 
-    public Author(int ID, String firstName, String lastName, int birthYear) {
-        this.ID = ID;
+    public Author(int id, String firstName, String lastName, int birthYear) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthYear = birthYear;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -31,6 +31,6 @@ public class Author {
 
     @Override
     public String toString() {
-        return "[" + this.ID + ", " + this.firstName + ", " + this.lastName + ", " + this.birthYear + "]";
+        return "[" + this.id + ", " + this.firstName + ", " + this.lastName + ", " + this.birthYear + "]";
     }
 }

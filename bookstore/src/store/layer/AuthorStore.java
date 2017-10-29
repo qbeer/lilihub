@@ -7,5 +7,5 @@ import model.Author;
 public interface AuthorStore {
     Author[] getAllAuthor() throws NoAuthorException;
     void addAuthor(Author author) throws InvalidAuthorException;
-    Author getAuthorByID(int ID) throws NoAuthorException;
+    Author getAuthorById(int id) throws NoAuthorException;
 }

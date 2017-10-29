@@ -1,21 +1,26 @@
 package service;
 
-import exception.InvalidISBNException;
+import exception.InvalidIsbnException;
 import exception.NoBookException;
 import model.Book;
 import service.layer.BookService;
 import store.FileBookStore;
+import store.layer.BookStore;
 
 public class MainBookService implements BookService {
 
-    private FileBookStore fileBookStore = new FileBookStore();
+    private BookStore bookStore;
+
+    public MainBookService(BookStore bookStore) {
+        this.bookStore = bookStore;
+    }
 
     @Override
     public Book[] getAllBook() {
         Book[] books = null;
 
         try {
-            books = fileBookStore.getAllBook();
+            books = bookStore.getAllBook();
         } catch (NoBookException e) {
             System.out.println("There are no books to list.");
         }
@@ -27,22 +32,22 @@ public class MainBookService implements BookService {
     public void addBook(Book book) {
 
         try {
-            fileBookStore.addBook(book);
-        } catch (InvalidISBNException e) {
+            bookStore.addBook(book);
+        } catch (InvalidIsbnException e) {
             System.out.println(e.getIsbn() + " ISBN number already exists.");
         }
 
     }
 
     @Override
-    public Book getBookByISBN(String ISBN) {
+    public Book getBookByIsbn(String isbn) {
 
         Book book = null;
 
         try {
-            book = fileBookStore.getBookByISBN(ISBN);
+            book = bookStore.getBookByIsbn(isbn);
         } catch (NoBookException e) {
-            System.out.println(e.getISBN() + " ISBN number not exists.");
+            System.out.println(e.getIsbn() + " ISBN number not exists.");
         }
 
         return book;

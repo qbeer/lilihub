@@ -1,6 +1,6 @@
 package store;
 
-import exception.InvalidISBNException;
+import exception.InvalidIsbnException;
 import exception.NoBookException;
 
 import model.Book;
@@ -29,7 +29,7 @@ public class FileBookStore implements BookStore {
         if(books.length == 0) throw new NoBookException();
 
         for (int i = 0; i < books.length; i++) {
-            books[i] = getBookByISBN(folderNames[i].getName());
+            books[i] = getBookByIsbn(folderNames[i].getName());
         }
 
         return books;
@@ -37,19 +37,19 @@ public class FileBookStore implements BookStore {
     }
 
     @Override
-    public void addBook(Book book) throws InvalidISBNException {
+    public void addBook(Book book) throws InvalidIsbnException {
 
-        if (new File("saved/book/" + book.getISBN()).exists()) {
-            throw new InvalidISBNException(book.getISBN());
+        if (new File("saved/book/" + book.getIsbn()).exists()) {
+            throw new InvalidIsbnException(book.getIsbn());
         }
 
-        File bookFile = new File("saved/book/" + book.getISBN() + "/book.txt");
+        File bookFile = new File("saved/book/" + book.getIsbn() + "/book.txt");
         bookFile.getParentFile().mkdirs();
 
         try (PrintWriter printWriter = new PrintWriter(bookFile)) {
             printWriter.println(book.getTitle());
-            printWriter.println(book.getISBN());
-            printWriter.println(book.getAuthorID());
+            printWriter.println(book.getIsbn());
+            printWriter.println(book.getAuthorId());
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
@@ -57,13 +57,13 @@ public class FileBookStore implements BookStore {
     }
 
     @Override
-    public Book getBookByISBN(String ISBN) throws NoBookException {
+    public Book getBookByIsbn(String isbn) throws NoBookException {
 
-        try (Scanner scanner = new Scanner(new File("saved/book/" + ISBN + "/book.txt"))) {
+        try (Scanner scanner = new Scanner(new File("saved/book/" + isbn + "/book.txt"))) {
             Book book = new Book(scanner.nextLine(), scanner.nextLine(), Integer.parseInt(scanner.nextLine()));
             return book;
         } catch (FileNotFoundException e) {
-            throw new NoBookException(ISBN);
+            throw new NoBookException(isbn);
         }
 
     }

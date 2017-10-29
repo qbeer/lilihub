@@ -1,13 +1,13 @@
 package exception;
 
 public class InvalidAuthorException extends Exception {
-    private int ID;
+    private int id;
 
-    public InvalidAuthorException(int ID) {
-        this.ID = ID;
+    public InvalidAuthorException(int id) {
+        this.id = id;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 }

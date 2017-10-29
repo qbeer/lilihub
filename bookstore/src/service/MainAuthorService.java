@@ -5,17 +5,22 @@ import exception.NoAuthorException;
 import model.Author;
 import service.layer.AuthorService;
 import store.FileAuthorStore;
+import store.layer.AuthorStore;
 
 public class MainAuthorService implements AuthorService {
 
-    private FileAuthorStore fileAuthorStore = new FileAuthorStore();
+    private AuthorStore authorStore;
+
+    public  MainAuthorService(AuthorStore authorStore) {
+        this.authorStore = authorStore;
+    }
 
     @Override
     public Author[] getAllAuthor() {
         Author[] authors = null;
 
         try {
-            authors = fileAuthorStore.getAllAuthor();
+            authors = authorStore.getAllAuthor();
             return authors;
         } catch (NoAuthorException e) {
             System.out.println("There are no authors to list.");
@@ -28,21 +33,21 @@ public class MainAuthorService implements AuthorService {
     public void addAuthor(Author author) {
 
         try {
-            fileAuthorStore.addAuthor(author);
+            authorStore.addAuthor(author);
         } catch (InvalidAuthorException e) {
-            System.out.println(e.getID() + " ID author already exists.");
+            System.out.println(e.getId() + " ID author already exists.");
         }
 
     }
 
     @Override
-    public Author getAuthorByID(int ID) {
+    public Author getAuthorById(int id) {
         Author author = null;
 
         try {
-            author = fileAuthorStore.getAuthorByID(ID);
+            author = authorStore.getAuthorById(id);
         } catch (NoAuthorException e) {
-            System.out.println(e.getID() + " ID author not exists.");
+            System.out.println(e.getId() + " ID author not exists.");
         }
 
         return author;

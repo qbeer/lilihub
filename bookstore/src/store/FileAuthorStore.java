@@ -29,7 +29,7 @@ public class FileAuthorStore implements AuthorStore {
         if(authors.length == 0) throw new NoAuthorException();
 
         for (int i = 0; i < authors.length; i++) {
-            authors[i] = getAuthorByID(Integer.parseInt(folderNames[i].getName()));
+            authors[i] = getAuthorById(Integer.parseInt(folderNames[i].getName()));
         }
 
         return authors;
@@ -38,15 +38,15 @@ public class FileAuthorStore implements AuthorStore {
     @Override
     public void addAuthor(Author author) throws InvalidAuthorException {
 
-        if (new File("saved/author/" + author.getID()).exists()) {
-            throw new InvalidAuthorException(author.getID());
+        if (new File("saved/author/" + author.getId()).exists()) {
+            throw new InvalidAuthorException(author.getId());
         }
 
-        File bookFile = new File("saved/author/" + author.getID() + "/author.txt");
+        File bookFile = new File("saved/author/" + author.getId() + "/author.txt");
         bookFile.getParentFile().mkdirs();
 
         try (PrintWriter printWriter = new PrintWriter(bookFile)) {
-            printWriter.println(author.getID());
+            printWriter.println(author.getId());
             printWriter.println(author.getFirstName());
             printWriter.println(author.getLastName());
             printWriter.println(author.getBirthYear());
@@ -57,14 +57,14 @@ public class FileAuthorStore implements AuthorStore {
     }
 
     @Override
-    public Author getAuthorByID(int ID) throws NoAuthorException {
+    public Author getAuthorById(int id) throws NoAuthorException {
 
-        try (Scanner scanner = new Scanner(new File("saved/author/" + ID + "/author.txt"))) {
+        try (Scanner scanner = new Scanner(new File("saved/author/" + id + "/author.txt"))) {
             Author author = new Author(Integer.parseInt(scanner.nextLine()), scanner.nextLine(), scanner.nextLine(),
                     Integer.parseInt(scanner.nextLine()));
             return author;
         } catch (FileNotFoundException e) {
-            throw new NoAuthorException(ID);
+            throw new NoAuthorException(id);
         }
 
     }

@@ -1,14 +1,14 @@
 package exception;
 
 public class NoAuthorException extends Exception {
-    private int ID;
+    private int id;
 
     public  NoAuthorException() {}
-    public NoAuthorException(int ID) {
-        this.ID = ID;
+    public NoAuthorException(int id) {
+        this.id = id;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 }
