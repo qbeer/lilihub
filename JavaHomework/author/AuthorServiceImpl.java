@@ -2,7 +2,10 @@
 package author;
 
 public class AuthorServiceImpl implements AuthorService {
-    AuthorStore authorStore = new FileAuthorStore();
+    AuthorStore authorStore;
+    public AuthorServiceImpl(AuthorStore authorStore) {
+        this.authorStore = authorStore;
+    }
     @Override
     public Author[] getAllAuthor(){
         Author[] allAuthor = null;

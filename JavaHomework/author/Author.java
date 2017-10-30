@@ -1,10 +1,10 @@
 package author;
 
 public class Author{
-    public String id;
-    public String firstName;
-    public String lastName;
-    public int birthYear;
+    private String id;
+    private String firstName;
+    private String lastName;
+    private int birthYear;
 
     @Override
     public String toString() {

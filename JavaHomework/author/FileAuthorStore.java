@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 public class FileAuthorStore implements AuthorStore{
+
     
     @Override
     public void addAuthor(Author author) throws InvalidAuthorException {
@@ -27,11 +28,11 @@ public class FileAuthorStore implements AuthorStore{
         File file = new File(directoryLocation+"/"+id+".txt");
         String fileContent = author.getId()+" "+ author.getFirstName()+" "+ 
                 author.getLastName()+" "+String.valueOf(author.getBirthYear());
-        BufferedWriter bw = null;
+        BufferedWriter bufferedWriter = null;
         try {
-            FileWriter fw = new FileWriter(file);
-		 bw = new BufferedWriter(fw);
-		 bw.write(fileContent);
+            FileWriter fileWriter = new FileWriter(file);
+		 bufferedWriter = new BufferedWriter(fileWriter);
+		 bufferedWriter.write(fileContent);
         }catch (IOException e) {
     		System.out.println("Exception Occurred:");
 	        e.printStackTrace();
@@ -39,8 +40,8 @@ public class FileAuthorStore implements AuthorStore{
 		finally
 		{ 
 		   try{
-			  if(bw!=null)
-			 bw.close();
+			  if(bufferedWriter!=null)
+			 bufferedWriter.close();
 		   }catch(Exception ex){
 			   System.out.println("Error in closing the BufferedWriter"+ex);
 			}
@@ -50,15 +51,15 @@ public class FileAuthorStore implements AuthorStore{
     @Override
     public Author getAuthorById(String id) throws NoAuthorException {
      String fileLocation = "authors/"+id+"/"+id+".txt";
-     Scanner sc = null;
+     Scanner scanner = null;
      try {
-        sc = new Scanner(new File(fileLocation));
+        scanner = new Scanner(new File(fileLocation));
         String iD, firstName, lastName;
         int birthYear;
-        iD = sc.next();
-        firstName = sc.next();
-        lastName = sc.next();
-        birthYear = sc.nextInt();
+        iD = scanner.next();
+        firstName = scanner.next();
+        lastName = scanner.next();
+        birthYear = scanner.nextInt();
         Author author = new Author(iD,firstName, lastName, birthYear);
        return author;
     } catch (FileNotFoundException e) {
@@ -69,7 +70,9 @@ public class FileAuthorStore implements AuthorStore{
     public Author[] getAllAuthor()throws NoAuthorException{
         Author[] authors = new Author[new File("authors/").listFiles().length];
         File[] directoriesNames = new File("authors/").listFiles();
-        if(authors.length == 0) {throw new NoAuthorException();}
+        if(authors.length == 0) {
+            throw new NoAuthorException();
+        }
         for(int i=0; i<authors.length; ++i){
             authors[i] = getAuthorById(directoriesNames[i].getName());
         }

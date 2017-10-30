@@ -3,9 +3,9 @@ package book;
 import author.Author;
 
 public class Book{
-     String title;
-     String isbn;
-     Author author;
+     private String title;
+     private String isbn;
+     private Author author;
 
     public Book(String isbn, String title, Author author) {
         this.title = title;

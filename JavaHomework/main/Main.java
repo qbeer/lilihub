@@ -1,6 +1,11 @@
 
 package main;
 
+import author.FileAuthorStore;
+import book.FileBookStore;
+import book.BookStore;
+import author.AuthorStore;
+import book.FileBookStore;
 import book.BookService;
 import author.AuthorService;
 import book.BookServiceImpl;
@@ -12,9 +17,10 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-      
-      AuthorService authorService = new AuthorServiceImpl();
-      BookService bookService = new BookServiceImpl();
+      AuthorStore authorStore = new FileAuthorStore();
+      BookStore bookStore = new FileBookStore();
+      AuthorService authorService = new AuthorServiceImpl(authorStore);
+      BookService bookService = new BookServiceImpl(bookStore);
         Author author1 = new Author("123","James","Smith",1996);
         Author author2 = new Author("222","James","Smith",1996);
         Author author3 = new Author("333","James","Smith",1996);

@@ -26,11 +26,11 @@ public class FileBookStore implements BookStore{
         
         File file = new File(directoryLocation+"/"+isbn+".txt");
         String fileContent = book.getIsbn()+" "+ book.getTitle()+" "+ book.getAuthor();
-        BufferedWriter bw = null;
+        BufferedWriter bufferedWriter = null;
         try {
-            FileWriter fw = new FileWriter(file);
-		 bw = new BufferedWriter(fw);
-		 bw.write(fileContent);
+            FileWriter fileWriter = new FileWriter(file);
+		 bufferedWriter = new BufferedWriter(fileWriter);
+		 bufferedWriter.write(fileContent);
         }catch (IOException e) {
     		System.out.println("Exception Occurred:");
 	        e.printStackTrace();
@@ -38,8 +38,8 @@ public class FileBookStore implements BookStore{
 		finally
 		{ 
 		   try{
-			  if(bw!=null)
-			 bw.close();
+			  if(bufferedWriter!=null)
+			 bufferedWriter.close();
 		   }catch(Exception ex){
 			   System.out.println("Error in closing the BufferedWriter"+ex);
 			}
@@ -48,17 +48,17 @@ public class FileBookStore implements BookStore{
     @Override
     public Book getBookByIsbn(String isbn)throws NoBookException{
      String fileLocation = "books/"+isbn+"/"+isbn+".txt";
-     Scanner sc = null;
+     Scanner scanner = null;
      try {
-        sc = new Scanner(new File(fileLocation));
+        scanner = new Scanner(new File(fileLocation));
         String iSbn, title, id, firstName, lastName;
         int birthYear;
-        iSbn = sc.next();
-        title = sc.next();
-        id = sc.next();
-        firstName = sc.next();
-        lastName = sc.next();
-        birthYear = sc.nextInt();
+        iSbn = scanner.next();
+        title = scanner.next();
+        id = scanner.next();
+        firstName = scanner.next();
+        lastName = scanner.next();
+        birthYear = scanner.nextInt();
         Author author = new Author(id,firstName, lastName, birthYear);
         Book book = new Book(iSbn, title, author);
        return book;
@@ -70,7 +70,9 @@ public class FileBookStore implements BookStore{
     public Book[] getAllBook()throws NoBookException{
         Book[] books = new Book[new File("books/").listFiles().length];
         File[] directoriesNames = new File("books/").listFiles();
-        if(books.length == 0) {throw new NoBookException();}
+        if(books.length == 0) {
+            throw new NoBookException();
+        }
         for(int i=0; i<books.length; ++i){
             books[i] = getBookByIsbn(directoriesNames[i].getName());
         }

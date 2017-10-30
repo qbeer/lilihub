@@ -5,7 +5,13 @@ import book.BookService;
 import book.Book;
 
 public class BookServiceImpl implements BookService {
-    BookStore bookStore = new FileBookStore();
+    BookStore bookStore;
+
+    public BookServiceImpl(BookStore bookStore) {
+        this.bookStore = bookStore;
+    }
+    
+    
     @Override
     public void addBook(Book book){
         try{
