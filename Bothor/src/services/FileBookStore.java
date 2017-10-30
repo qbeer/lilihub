@@ -1,9 +1,10 @@
-package Services;
+package services;
 
-import Exceptions.InvalidIsbnException;
-import Exceptions.NoBookByIsbnException;
-import Store.Book;
-import Store.BookStore;
+import exceptions.InvalidIsbnException;
+import exceptions.NoBookByIsbnException;
+import exceptions.NoBooksException;
+import store.Book;
+import store.BookStore;
 
 import java.io.*;
 
@@ -57,5 +58,26 @@ public class FileBookStore implements BookStore {
                 System.out.println("IOException - Services.FileBookStore addBook");
             }
         }
+    }
+
+    @Override
+    public Book[] getAllBooks() throws NoBooksException{
+        File[] files = new File(srcDir+"/books/").listFiles();
+        if(files == null){
+            throw new NoBooksException("There are no books added yet.");
+        }
+        int bookIndex = 0;
+        Book[] books = new Book[files.length];
+        for(File file : files){
+            if(file.isDirectory()) {
+                try {
+                    books[bookIndex] = this.getBookByIsbn(file.getName());
+                    bookIndex++;
+                } catch (NoBookByIsbnException e) {
+                    System.out.println("Never occurring exception.");
+                }
+            }
+        }
+        return books;
     }
 }

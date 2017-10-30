@@ -1,4 +1,4 @@
-package Store;
+package store;
 
 public class Author {
 
@@ -6,9 +6,6 @@ public class Author {
     private String firstName;
     private String lastName;
     private int birthYear;
-
-    public Author() {
-    }
 
     public Author(int id, String firstName, String lastName, int birthYear) {
         this.id = id;
@@ -51,6 +48,6 @@ public class Author {
 
     @Override
     public String toString(){
-        return String.format("Store.Author[Name = %s %s, Id = %d, Year of birth = %d]",firstName,lastName,id,birthYear);
+        return String.format("Author[Name = %s %s, Id = %d, Year of birth = %d]",firstName,lastName,id,birthYear);
     }
 }

@@ -1,4 +1,4 @@
-package Store;
+package store;
 
 public class Book {
 
@@ -38,7 +38,7 @@ public class Book {
 
     @Override
     public String toString(){
-        return String.format("Store.Book[Title = %s, Store.Author's id = %d, ISBN = %s]",title,authorId,isbn);
+        return String.format("Book[Title = %s, Store.Author's id = %d, ISBN = %s]",title,authorId,isbn);
     }
 
 }

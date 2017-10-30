@@ -1,9 +1,10 @@
-package Services;
+package services;
 
-import Exceptions.InvalidIdException;
-import Exceptions.NoAuthorByIdException;
-import Store.Author;
-import Store.AuthorStore;
+import exceptions.InvalidIdException;
+import exceptions.NoAuthorByIdException;
+import exceptions.NoAuthorsException;
+import store.Author;
+import store.AuthorStore;
 
 import java.io.*;
 
@@ -61,6 +62,27 @@ public class FileAuthorStore implements AuthorStore {
                 System.out.println("IOException - Services.FileAuthorStore addAuthor");
             }
         }
+    }
+
+    @Override
+    public Author[] getAllAuthors() throws NoAuthorsException{
+        File[] files = new File(srcDir+"/authors/").listFiles();
+        if(files == null){
+            throw new NoAuthorsException("There are no authors added yet.");
+        }
+        int authorIndex = 0;
+        Author[] authors = new Author[files.length];
+        for(File file : files){
+            if(file.isDirectory()) {
+                try {
+                    authors[authorIndex] = this.getAuthorById(Integer.parseInt(file.getName()));
+                    authorIndex++;
+                } catch (NoAuthorByIdException e) {
+                    System.out.println("Never occurring exception.");
+                }
+            }
+        }
+        return authors;
     }
 
 }

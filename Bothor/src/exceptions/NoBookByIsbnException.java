@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class NoBookByIsbnException extends Exception {
     public NoBookByIsbnException() {

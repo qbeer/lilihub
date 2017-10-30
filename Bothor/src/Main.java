@@ -1,18 +1,14 @@
-import Exceptions.InvalidIdException;
-import Exceptions.InvalidIsbnException;
-import Exceptions.NoAuthorByIdException;
-import Exceptions.NoBookByIsbnException;
-import Services.AuthorServiceImpl;
-import Services.BookServiceImpl;
-import Store.Author;
-import Store.Book;
+import exceptions.*;
+import services.*;
+import store.Author;
+import store.Book;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidIsbnException, InvalidIdException, NoAuthorsException, NoBooksException, NoAuthorByIdException, NoBookByIsbnException {
 
         Book book1 = new Book("ISBN-9789989153822", "Norwegian Wood", 1);
         Book book2 = new Book("ISBN-9780571315031", "The Buried Giant", 2);
@@ -23,75 +19,73 @@ public class Main {
         Path currentRelativePath = Paths.get("");
         String absolutePath = currentRelativePath.toAbsolutePath().toString();
 
-        BookServiceImpl bookService1 = new BookServiceImpl(absolutePath);
-        AuthorServiceImpl authorService1 = new AuthorServiceImpl(absolutePath);
+        BookServiceImpl bookService = new BookServiceImpl(new FileBookStore(absolutePath));
+        AuthorServiceImpl authorService = new AuthorServiceImpl(new FileAuthorStore(absolutePath));
 
-        try {
-            bookService1.addBook(book1);
-        }catch (InvalidIsbnException e){
-            System.out.println("Invalid ISBN, couldn't add books.");
+        addBook(bookService, book1);
+        addBook(bookService, book1); // Book is already in the database.
+        addBook(bookService, book2);
+        addBook(bookService, book3);
+
+        addAuthor(authorService, author1);
+        addAuthor(authorService, author2);
+        addAuthor(authorService, author1); // Author is already in the database.
+
+        Author[] authors = authorService.getAllAuthors();
+        for(Author author : authors){
+            System.out.println(author);
         }
 
-        try {
-            bookService1.addBook(book2);
-        }catch (InvalidIsbnException e){
-            System.out.println("Invalid ISBN, couldn't add books.");
+        System.out.println("\n*******************************************************\n");
+
+        Book[] books = bookService.getAllBooks();
+        for(Book book : books){
+            System.out.println(book);
         }
 
-        try {
-            bookService1.addBook(book3);
-        }catch (InvalidIsbnException e){
-            System.out.println("Invalid ISBN, couldn't add books.");
-        }
+        System.out.println("\n*******************************************************\n");
 
+        getAuthorById(authorService,1);
+        getAuthorById(authorService, 42); // NoAuthorByIdException
+
+        System.out.println("\n*******************************************************\n");
+
+        getBookByIsbn(bookService, "ISBN-9780571315032");
+        getBookByIsbn(bookService, "Dummy-ISBN"); // NoBookByIsbnException
+
+
+    }
+
+    public static void getAuthorById(AuthorServiceImpl service, int id) throws NoAuthorByIdException{
         try{
-            authorService1.addAuthor(author1);
-        }catch (InvalidIdException e){
-            System.out.println("Invalid ID, couldn't add authors.");
-        }
-
-        try{
-            authorService1.addAuthor(author2);
-        }catch (InvalidIdException e){
-            System.out.println("Invalid ID, couldn't add authors.");
-        }
-
-        try{
-            System.out.println("***********************************");
-            for(Author author : authorService1.getAllAuthors()){
-                System.out.println(author);
-            }
-            System.out.println("***********************************\n");
+            System.out.println(service.getAuthorById(id));
         }catch (NoAuthorByIdException e){
-            System.out.println("Couldn't output all authors, there are none.");
+            System.out.println("No author by ID :: "+id);
         }
+    }
 
+    public static void getBookByIsbn(BookServiceImpl service, String isbn) throws NoBookByIsbnException{
         try{
-            System.out.println("***********************************");
-            for(Book book : bookService1.getAllBooks()){
-                System.out.println(book);
-            }
-            System.out.println("***********************************\n");
+            System.out.println(service.getBookByIsbn(isbn));
         }catch (NoBookByIsbnException e){
-            System.out.println("Couldn't output all books, there are none.");
+            System.out.println("No book by ISBN :: "+isbn);
         }
+    }
 
+    public static void addBook(BookServiceImpl service, Book book) throws InvalidIsbnException{
         try{
-            System.out.println("*************************************");
-            System.out.println(bookService1.getBookByIsbn("ISBN-9780571315031"));
-            System.out.println("*************************************\n");
-        }catch (NoBookByIsbnException e){
-            System.out.println("There's no book with the provided ISBN.");
+            service.addBook(book);
+        }catch (InvalidIsbnException e){
+            System.out.println("Book is already in the database.");
         }
+    }
 
+    public static void addAuthor(AuthorServiceImpl service, Author author) throws InvalidIdException{
         try{
-            System.out.println("*************************************");
-            System.out.println(authorService1.getAuthorById(1));
-            System.out.println("*************************************\n");
-        }catch (NoAuthorByIdException e){
-            System.out.println("There's no author with the provided ID.");
+            service.addAuthor(author);
+        }catch (InvalidIdException e){
+            System.out.println("Author is already in the database.");
         }
-
     }
 
 }
