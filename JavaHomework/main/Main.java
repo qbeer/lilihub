@@ -25,11 +25,9 @@ public class Main {
         
         bookService.addBook(book1);
         bookService.addBook(book2);
-        //System.out.println(service2.getBookByISBN("000"));
         authorService.addAuthor(author2);
         authorService.addAuthor(author3);
         authorService.addAuthor(author4);
-        //System.out.println(service.getAuthorByID("123"));
         Author[] array = new Author[authorService.getAllAuthor().length];
         array = authorService.getAllAuthor();
         for(int i=0; i<array.length;++i){
