@@ -1,9 +1,7 @@
-package Book;
+package book;
 
-import Book.Book;
-
-public interface BookStore{
-    public void addBook(Book book)throws InvalidIsbnException;
-    public Book getBookByISBN(String isbn)throws NoBookException; 
-    public Book[] getAllBook()throws NoBookException;
+interface BookStore{
+     void addBook(Book book)throws InvalidIsbnException;
+     Book getBookByIsbn(String isbn)throws NoBookException; 
+     Book[] getAllBook()throws NoBookException;
 }

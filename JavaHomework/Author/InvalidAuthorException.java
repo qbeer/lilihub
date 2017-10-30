@@ -1,8 +1,8 @@
 
-package Author;
+package author;
 
 public class InvalidAuthorException extends Exception{
-    String id;
+    private final String id;
     public InvalidAuthorException(String id){
         this.id=id;
     }

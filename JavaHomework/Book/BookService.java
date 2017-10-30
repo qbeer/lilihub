@@ -1,10 +1,7 @@
-package Book;
-
-import Book.Book;
-
+package book;
 
 public interface BookService{
-    public void addBook(Book book);
-    public Book[] getAllBook();
-    public Book getBookByISBN(String isbn);
+     void addBook(Book book);
+     Book[] getAllBook();
+     Book getBookByIsbn(String isbn);
 }

@@ -1,10 +1,8 @@
 
-package Book;
-
-import Book.Book;
+package book;
 
 public class NoBookException extends Exception{
-    Book book;
+   private final Book book;
 
     public NoBookException() {
         this.book = null;

@@ -1,12 +1,8 @@
 
-package Author;
-
-import Author.AuthorService;
-import Author.Author;
-
+package author;
 
 public class AuthorServiceImpl implements AuthorService {
-    FileAuthorStore authorStore = new FileAuthorStore();
+    AuthorStore authorStore = new FileAuthorStore();
     @Override
     public Author[] getAllAuthor(){
         Author[] allAuthor = null;
@@ -27,10 +23,10 @@ public class AuthorServiceImpl implements AuthorService {
     }
     }
     @Override
-    public Author getAuthorByID(String id){
+    public Author getAuthorById(String id){
         Author author = null;
        try{
-            author = authorStore.getAuthorByID(id);
+            author = authorStore.getAuthorById(id);
        }catch(NoAuthorException e){
         System.out.println("No author");
     }

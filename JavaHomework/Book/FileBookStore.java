@@ -1,8 +1,6 @@
-package Book;
+package book;
 
-import Book.BookStore;
-import Book.Book;
-import Author.Author;
+import author.Author;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,18 +8,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public class FileBookStore implements BookStore{
     @Override
     public void addBook(Book book)throws InvalidIsbnException{
+        File booksFolder = new File("books");
+      if(!booksFolder.exists()){
+          booksFolder.mkdir();
+      }
         String isbn = book.getIsbn();
-      String dirname2 = "books/"+isbn;
-      File d = new File(dirname2);
+      String directoryLocation = "books/"+isbn;
+      File d = new File(directoryLocation);
       if(d.exists()){
           throw new InvalidIsbnException(isbn);
       }
       d.mkdir();
         
-        File file = new File(dirname2+"/"+isbn+".txt");
+        File file = new File(directoryLocation+"/"+isbn+".txt");
         String fileContent = book.getIsbn()+" "+ book.getTitle()+" "+ book.getAuthor();
         BufferedWriter bw = null;
         try {
@@ -43,11 +46,11 @@ public class FileBookStore implements BookStore{
                 }
     }
     @Override
-    public Book getBookByISBN(String isbn)throws NoBookException{
-     String dirname = "books/"+isbn+"/"+isbn+".txt";
+    public Book getBookByIsbn(String isbn)throws NoBookException{
+     String fileLocation = "books/"+isbn+"/"+isbn+".txt";
      Scanner sc = null;
      try {
-        sc = new Scanner(new File(dirname));
+        sc = new Scanner(new File(fileLocation));
         String iSbn, title, id, firstName, lastName;
         int birthYear;
         iSbn = sc.next();
@@ -69,7 +72,7 @@ public class FileBookStore implements BookStore{
         File[] directoriesNames = new File("books/").listFiles();
         if(books.length == 0) {throw new NoBookException();}
         for(int i=0; i<books.length; ++i){
-            books[i] = getBookByISBN(directoriesNames[i].getName());
+            books[i] = getBookByIsbn(directoriesNames[i].getName());
         }
         return books;
     }

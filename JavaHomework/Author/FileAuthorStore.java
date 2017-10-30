@@ -1,7 +1,5 @@
-package Author;
+package author;
 
-import Author.AuthorStore;
-import Author.Author;
 import java.io.File;
 import java.io.IOException;
 import java.io.BufferedWriter;
@@ -10,19 +8,23 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 public class FileAuthorStore implements AuthorStore{
-   
+    
     @Override
     public void addAuthor(Author author) throws InvalidAuthorException {
+      File authorsFolder = new File("authors");
+      if(!authorsFolder.exists()){
+      authorsFolder.mkdir();
+      }
         
     String id = author.getId();
-      String dirname2 = "authors/"+id;
-      File d = new File(dirname2);
+      String directoryLocation = "authors/"+id;
+      File d = new File(directoryLocation);
       if(d.exists()){
           throw new InvalidAuthorException(id);
       }
       d.mkdir();
         
-        File file = new File(dirname2+"/"+id+".txt");
+        File file = new File(directoryLocation+"/"+id+".txt");
         String fileContent = author.getId()+" "+ author.getFirstName()+" "+ 
                 author.getLastName()+" "+String.valueOf(author.getBirthYear());
         BufferedWriter bw = null;
@@ -46,11 +48,11 @@ public class FileAuthorStore implements AuthorStore{
       }
         
     @Override
-    public Author getAuthorByID(String id) throws NoAuthorException {
-     String dirname = "authors/"+id+"/"+id+".txt";
+    public Author getAuthorById(String id) throws NoAuthorException {
+     String fileLocation = "authors/"+id+"/"+id+".txt";
      Scanner sc = null;
      try {
-        sc = new Scanner(new File(dirname));
+        sc = new Scanner(new File(fileLocation));
         String iD, firstName, lastName;
         int birthYear;
         iD = sc.next();
@@ -69,7 +71,7 @@ public class FileAuthorStore implements AuthorStore{
         File[] directoriesNames = new File("authors/").listFiles();
         if(authors.length == 0) {throw new NoAuthorException();}
         for(int i=0; i<authors.length; ++i){
-            authors[i] = getAuthorByID(directoriesNames[i].getName());
+            authors[i] = getAuthorById(directoriesNames[i].getName());
         }
         return authors;
     }

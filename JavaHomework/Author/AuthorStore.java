@@ -1,10 +1,8 @@
-package Author;
+package author;
 
-import Author.Author;
-
-public interface AuthorStore{
-    public void addAuthor(Author author)throws InvalidAuthorException;
-    public Author getAuthorByID(String id)throws NoAuthorException;
-    public Author[] getAllAuthor()throws NoAuthorException;
+interface AuthorStore{
+    void addAuthor(Author author)throws InvalidAuthorException;
+    Author getAuthorById(String id)throws NoAuthorException;
+    Author[] getAllAuthor()throws NoAuthorException;
     
 }

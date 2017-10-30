@@ -1,12 +1,8 @@
-package Author;
-
-import Author.Author;
-
+package author;
 
 public interface AuthorService {
     
-    
-    public Author[] getAllAuthor();
-    public void addAuthor(Author author);
-    public Author getAuthorByID(String id);
+    Author[] getAllAuthor();
+    void addAuthor(Author author);
+    Author getAuthorById(String id);
 }

@@ -1,10 +1,8 @@
 
-package Author;
-
-import Author.Author;
+package author;
 
 public class NoAuthorException extends Exception{
-    Author author;
+    private final Author author;
 
     public NoAuthorException() {
         this.author = null;

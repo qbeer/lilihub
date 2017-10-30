@@ -1,11 +1,11 @@
 
-package Book;
+package book;
 
-import Book.BookService;
-import Book.Book;
+import book.BookService;
+import book.Book;
 
 public class BookServiceImpl implements BookService {
-    FileBookStore bookStore = new FileBookStore();
+    BookStore bookStore = new FileBookStore();
     @Override
     public void addBook(Book book){
         try{
@@ -16,10 +16,10 @@ public class BookServiceImpl implements BookService {
         
     }
     @Override
-    public Book getBookByISBN(String isbn){
+    public Book getBookByIsbn(String isbn){
         Book book = null;
        try{
-            book = bookStore.getBookByISBN(isbn);
+            book = bookStore.getBookByIsbn(isbn);
        }catch(NoBookException e){
         System.out.println("No book");
     }

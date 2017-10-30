@@ -1,9 +1,8 @@
 
-package Book;
-
+package book;
 
 public class InvalidIsbnException extends Exception {
-    String isbn;
+    private final String isbn;
 
     public InvalidIsbnException(String isbn) {
         this.isbn = isbn;

@@ -1,6 +1,6 @@
-package Book;
+package book;
 
-import Author.Author;
+import author.Author;
 
 public class Book{
      String title;
