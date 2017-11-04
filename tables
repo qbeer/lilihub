@@ -15,7 +15,7 @@ CREATE TABLE Profile(
     id int NOT NULL PRIMARY KEY,
     user_id varchar(50) NOT NULL,
     CONSTRAINT FK_UserId FOREIGN KEY (user_id)
-    REFERENCES user_aut(id),
+    REFERENCES user_aut(email),
     birth_data Date NOT NULL,
     gender varchar(1) NOT NULL,
     gender_preference varchar(1) NOT NULL,
