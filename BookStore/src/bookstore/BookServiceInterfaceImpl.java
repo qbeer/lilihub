@@ -13,22 +13,14 @@ package bookstore;
 public class BookServiceInterfaceImpl implements BookServiceInterface {
     
     private FileBookStore bookStore;
-    /*public static FileBookStore getInstance(){
-        if (bookStore == null){
-            bookStore = new FileBookStore();
-        }
-        return bookStore;
-    }*/
+    
 
-    public BookServiceInterfaceImpl() {
-    }
-
-    public BookServiceInterfaceImpl(FileBookStore bookStore) {
-        this.bookStore = bookStore;
+    public BookServiceInterfaceImpl(int size) {
+        bookStore = new FileBookStore(size);
     }
     
     @Override
-    public Book[] getAllBook(FileBookStore bookStore) {
+    public Book[] getAllBook() {
         Book[] books = new Book[bookStore.getNumberOfBooks()];
         for(int i =0;i<books.length;i++){
             if (bookStore.getBooks()[i] != null) {
@@ -41,7 +33,7 @@ public class BookServiceInterfaceImpl implements BookServiceInterface {
     @Override
     public void addBook(Book newBook) {
         try{
-            getBookStore().addBook(newBook);
+            bookStore.addBook(newBook);
         }
         catch(InValidISBNException e){
             System.out.println(e.getMessage());
@@ -52,27 +44,18 @@ public class BookServiceInterfaceImpl implements BookServiceInterface {
     public Book getBookByISBN(String isbn) {
         Book foundBook = null;
         try {
-            getBookStore().getBookByISBN(isbn);
-            foundBook = getBookStore().getFoundBook();
+            foundBook = bookStore.getBookByISBN(isbn);
         }        
-        catch(noBookException e){
+        catch(NoBookException e){
             System.out.println(e.getMessage());
         }
+        if(foundBook!=null) System.out.println("There's "+foundBook.getTitle()+" in the store");
         return foundBook;
     }
 
     /**
      * @return the bookStore
      */
-    public FileBookStore getBookStore() {
-        return bookStore;
-    }
-
-    /**
-     * @param bookStore the bookStore to set
-     */
-    public void setBookStore(FileBookStore bookStore) {
-        this.bookStore = bookStore;
-    }
+    
     
 }

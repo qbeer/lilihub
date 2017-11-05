@@ -11,5 +11,5 @@ package bookstore;
  */
 public interface BookStore {
     void addBook(Book newBook) throws InValidISBNException;
-    void getBookByISBN(String isbn) throws noBookException;
+    Book getBookByISBN(String isbn) throws NoBookException;
 }

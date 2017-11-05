@@ -10,6 +10,6 @@ package bookstore;
  * @author PNMINH
  */
 public interface AuthorStore {
-    public void addAuthor() throws InValidAuthorException;
-    public void getAuthorByID() throws noAuthorException;
+    void addAuthor(Author newAuthor) throws InValidAuthorException;
+    Author getAuthorByID(int ID) throws NoAuthorException;
 }

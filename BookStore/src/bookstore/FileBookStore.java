@@ -7,6 +7,7 @@ package bookstore;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -19,21 +20,20 @@ import java.io.IOException;
 public class FileBookStore implements BookStore {
 
     private Book[] books;
-    private Book foundBook;
     private int numberOfBooks;
     
-    public void writeToFile(String fileName) throws IOException {
+    private void writeToFile(String fileName,Book currentBook) throws IOException {
         FileWriter fileWriter = new FileWriter(fileName);
         BufferedWriter writer = new BufferedWriter(fileWriter);
 
-        for (Book currentBook : getBooks()) {
+        if (currentBook != null) {
             writer.write("Title: " + currentBook.getTitle() + " || ISBN: "
                     + currentBook.getIsbn() + " || Author ID: " + currentBook.getAuthorID() + "\n");
         }
         writer.close();
     }
 
-    public void readFromFile(String fileName) throws FileNotFoundException, IOException {
+    private void readFromFile(String fileName) throws FileNotFoundException, IOException {
         FileReader fileReader = new FileReader(fileName);
         BufferedReader reader = new BufferedReader(fileReader);
 
@@ -43,7 +43,6 @@ public class FileBookStore implements BookStore {
         }
         reader.close();
     }
-    public FileBookStore() {}
     
     public FileBookStore(int size) {
         books = new Book[size];
@@ -55,14 +54,23 @@ public class FileBookStore implements BookStore {
         if (!(newBook.getIsbn() instanceof String)) {
             throw new InValidISBNException("Not a valid ISBN");
         }
-        if(getNumberOfBooks() >= getBooks().length){
+        if (getNumberOfBooks() >= getBooks().length) {
             System.out.println("Limit has reached.");
         }
-        getBooks()[getNumberOfBooks()] = newBook;
-        setNumberOfBooks(getNumberOfBooks() + 1);
+        books[numberOfBooks] = newBook;
+        numberOfBooks++;
+        File bookFolder = new File("books/" + newBook.getIsbn());
+        if (!bookFolder.exists()) {
+            bookFolder.mkdirs();
+        }
+        try {
+            writeToFile(bookFolder + "\\book.txt", newBook);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public int lookUpISBN(String isbn) {
+    private int lookUpISBN(String isbn) {
         boolean contains = false;
         int index = 0;
         while (index < getBooks().length && !contains) {
@@ -74,13 +82,13 @@ public class FileBookStore implements BookStore {
     }
     
     @Override
-    public void getBookByISBN(String isbn) throws noBookException {
+    public Book getBookByISBN(String isbn) throws NoBookException {
         int index = lookUpISBN(isbn);
-        if(index == -1) {
-            throw new noBookException("There's no such book");
+        File path = new File("book/"+isbn);
+        if(!path.exists()){
+            throw new NoBookException("There's no such book");
         }
-        foundBook = getBooks()[index];
-        System.out.println("Book with this isbn: "+foundBook.getTitle());
+        return books[index];
     }
 
     /**
@@ -114,14 +122,5 @@ public class FileBookStore implements BookStore {
     /**
      * @return the foundBook
      */
-    public Book getFoundBook() {
-        return foundBook;
-    }
-
-    /**
-     * @param foundBook the foundBook to set
-     */
-    public void setFoundBook(Book foundBook) {
-        this.foundBook = foundBook;
-    }
+    
 }

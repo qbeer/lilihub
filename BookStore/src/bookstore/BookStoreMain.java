@@ -22,14 +22,12 @@ public class BookStoreMain {
         Book book2 = new Book("Motor","345",123);
         Book book3 = new Book("Bike","456",234);
         
-        BookServiceInterfaceImpl bookService = new BookServiceInterfaceImpl();
+        BookServiceInterfaceImpl bookService = new BookServiceInterfaceImpl(10);
         bookService.addBook(book1);
         bookService.addBook(book2);
         bookService.addBook(book3);
-        try{
-        bookService.getBookStore().writeToFile("D:\\book\\book.txt");
-        }catch(IOException e){
-            System.out.println(e.getMessage());
-        }
+        
+        bookService.getBookByISBN("123");
+        
     }
 }

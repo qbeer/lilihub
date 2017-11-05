@@ -10,11 +10,13 @@ package bookstore;
  * @author PNMINH
  */
 public class Book {
-    private String title,isbn;
+
+    private String title, isbn;
     private int authorID;
-    
-    public Book() {}
-    
+
+    public Book() {
+    }
+
     public Book(String title, String isbn, int authorID) {
         this.title = title;
         this.isbn = isbn;
@@ -62,5 +64,5 @@ public class Book {
     public void setAuthorID(int authorID) {
         this.authorID = authorID;
     }
-    
+
 }

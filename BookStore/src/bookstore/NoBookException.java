@@ -9,13 +9,13 @@ package bookstore;
  *
  * @author PNMINH
  */
-public class noBookException extends Exception {
+public class NoBookException extends Exception {
 
     /**
      * Creates a new instance of <code>noBookException</code> without detail
      * message.
      */
-    public noBookException() {
+    public NoBookException() {
     }
 
     /**
@@ -24,7 +24,7 @@ public class noBookException extends Exception {
      *
      * @param msg the detail message.
      */
-    public noBookException(String msg) {
+    public NoBookException(String msg) {
         super(msg);
     }
 }
