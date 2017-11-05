@@ -10,8 +10,9 @@ package bookstore;
  * @author PNMINH
  */
 public class Author {
-    private int id,birthYear;
-    private String firstName,lastName;
+
+    private int id, birthYear;
+    private String firstName, lastName;
 
     public Author(int id, int birthYear, String firstName, String lastName) {
         this.id = id;

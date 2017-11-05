@@ -15,6 +15,7 @@ import java.io.IOException;
  * @author PNMINH
  */
 public class FileAuthorStore implements AuthorStore {
+
     private Author[] authors;
     private Author currentAuthor;
     private int numberOfAuthors;
@@ -23,8 +24,8 @@ public class FileAuthorStore implements AuthorStore {
         authors = new Author[size];
         numberOfAuthors = 0;
     }
-    
-    private void writeToFile(String fileName,Author author) throws IOException{
+
+    private void writeToFile(String fileName, Author author) throws IOException {
         FileWriter fileWriter = new FileWriter(fileName);
         BufferedWriter writer = new BufferedWriter(fileWriter);
 
@@ -36,15 +37,14 @@ public class FileAuthorStore implements AuthorStore {
         }
         writer.close();
     }
-    
-    
+
     @Override
     public void addAuthor(Author newAuthor) throws InValidAuthorException {
         File authorFolder = new File("author/" + newAuthor.getId());
         if (getNumberOfAuthors() >= getAuthors().length) {
             System.out.println("Cannot add any author");
         }
-        if(authorFolder.exists()){
+        if (authorFolder.exists()) {
             System.out.println("cannot add author");
         }
         authorFolder.mkdirs();
@@ -56,25 +56,25 @@ public class FileAuthorStore implements AuthorStore {
             System.out.println(e.getMessage());
         }
     }
-    
+
     @Override
     public Author getAuthorByID(int ID) throws NoAuthorException {
-        File path = new File("author/"+ID);
-        if(!path.exists()){
+        File path = new File("author/" + ID);
+        if (!path.exists()) {
             throw new NoAuthorException("There's no such author");
         }
         int index = lookUpAuthor(ID);
         return getAuthors()[index];
     }
 
-    private int lookUpAuthor(int ID){
+    private int lookUpAuthor(int ID) {
         boolean contain = false;
         int index = 0;
-        while(index<getAuthors().length && !contain){
-            contain = (getAuthors()[index].getId()==ID);
+        while (index < getAuthors().length && !contain) {
+            contain = (getAuthors()[index].getId() == ID);
             index++;
         }
-        return (contain) ? index-1 : -1;
+        return (contain) ? index - 1 : -1;
     }
 
     /**
@@ -93,6 +93,5 @@ public class FileAuthorStore implements AuthorStore {
     /**
      * @return the authors
      */
-    
-    
+
 }

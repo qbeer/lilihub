@@ -11,18 +11,17 @@ package bookstore;
  * @author PNMINH
  */
 public class BookServiceInterfaceImpl implements BookServiceInterface {
-    
+
     private FileBookStore bookStore;
-    
 
     public BookServiceInterfaceImpl(int size) {
         bookStore = new FileBookStore(size);
     }
-    
+
     @Override
     public Book[] getAllBook() {
         Book[] books = new Book[bookStore.getNumberOfBooks()];
-        for(int i =0;i<books.length;i++){
+        for (int i = 0; i < books.length; i++) {
             if (bookStore.getBooks()[i] != null) {
                 books[i] = bookStore.getBooks()[i];
             }
@@ -32,10 +31,9 @@ public class BookServiceInterfaceImpl implements BookServiceInterface {
 
     @Override
     public void addBook(Book newBook) {
-        try{
+        try {
             bookStore.addBook(newBook);
-        }
-        catch(InValidISBNException e){
+        } catch (InValidISBNException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -45,17 +43,16 @@ public class BookServiceInterfaceImpl implements BookServiceInterface {
         Book foundBook = null;
         try {
             foundBook = bookStore.getBookByISBN(isbn);
-        }        
-        catch(NoBookException e){
+        } catch (NoBookException e) {
             System.out.println(e.getMessage());
         }
-        if(foundBook!=null) System.out.println("There's "+foundBook.getTitle()+" in the store");
+        if (foundBook != null) {
+            System.out.println("There's " + foundBook.getTitle() + " in the store");
+        }
         return foundBook;
     }
 
     /**
      * @return the bookStore
      */
-    
-    
 }

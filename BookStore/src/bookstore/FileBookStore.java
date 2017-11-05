@@ -21,8 +21,8 @@ public class FileBookStore implements BookStore {
 
     private Book[] books;
     private int numberOfBooks;
-    
-    private void writeToFile(String fileName,Book currentBook) throws IOException {
+
+    private void writeToFile(String fileName, Book currentBook) throws IOException {
         FileWriter fileWriter = new FileWriter(fileName);
         BufferedWriter writer = new BufferedWriter(fileWriter);
 
@@ -43,7 +43,7 @@ public class FileBookStore implements BookStore {
         }
         reader.close();
     }
-    
+
     public FileBookStore(int size) {
         books = new Book[size];
         numberOfBooks = 0;
@@ -77,15 +77,15 @@ public class FileBookStore implements BookStore {
             contains = (getBooks()[index].getIsbn().equals(isbn));
             index++;
         }
-        index = (contains) ? index - 1: -1;
+        index = (contains) ? index - 1 : -1;
         return index;
     }
-    
+
     @Override
     public Book getBookByISBN(String isbn) throws NoBookException {
         int index = lookUpISBN(isbn);
-        File path = new File("book/"+isbn);
-        if(!path.exists()){
+        File path = new File("book/" + isbn);
+        if (!path.exists()) {
             throw new NoBookException("There's no such book");
         }
         return books[index];
@@ -118,9 +118,8 @@ public class FileBookStore implements BookStore {
     public void setBooks(Book[] books) {
         this.setBooks(books);
     }
-    
+
     /**
      * @return the foundBook
      */
-    
 }
