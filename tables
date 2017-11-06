@@ -98,4 +98,42 @@ CREATE TABLE Hobby(
     title varchar(50),
     description varchar(250)
 );
+CREATE TABLE Recommended_match{
+	id int NOT NULL PRIMARY KEY,
+	recommended_profile_id int FOREIGN KEY,
+	CONSTRAINT FK_recommended_profile_id FOREIGN KEY (recommended_profile_id)
+	REFERENCES Profile(id),
+	recommended_to_id int FOREIGN KEY,
+	CONSTRAINT FK_recommended_to_id FOREIGN KEY (recommended_to_id)
+	REFERENCES Profile(id),
+	status varchar(1),
+	role_percentage int,
+};
+CREATE TABLE Gift{
+	id int NOT NULL PRIMARY KEY,
+	type varchar,
+	sender_id int NOT NULL,
+    CONSTRAINT FK_SenderId FOREIGN KEY (sender_id) 
+    REFERENCES Profile(id),
+    receiver_id int NOT NULL,
+    CONSTRAINT FK_ReceiverId FOREIGN KEY (receiver_id) 
+    REFERENCES Profile(id),
+};
+CREATE TABLE Favorite{
+	id int NOT NULL PRIMARY KEY,
+	title varchar(20),
+	profile_id int FOREIGN KEY,
+	CONSTRAINT FK_ProfileId FOREIGN KEY (profile_id)
+	REFERENCES Profile(id),
+};
+CREATE TABLE Rate{
+	id int NOT NULL PRIMARY KEY,
+	sender_id int NOT NULL,
+    CONSTRAINT FK_SenderId FOREIGN KEY (sender_id) 
+    REFERENCES Profile(id),
+    receiver_id int NOT NULL,
+    CONSTRAINT FK_ReceiverId FOREIGN KEY (receiver_id) 
+    REFERENCES Profile(id),
+};
+
 
