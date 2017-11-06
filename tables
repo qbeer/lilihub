@@ -27,6 +27,13 @@ CREATE TABLE Profile(
     REFERENCES name(id)
 );
 
+CREATE TABLE Profile_picture(
+    id int PRIMARY KEY,
+    profile_id int NOT NULL,
+    CONSTRAINT FK_ProfileId FOREIGN KEY (profile_id)
+    REFERENCES Profile(id)
+);
+
 CREATE TABLE Company(
     id int NOT NULL PRIMARY KEY,
     profile_id int NOT NULL,
@@ -75,3 +82,10 @@ CREATE TABLE Message(
     media_type varchar(1) NOT NULL,
     context varchar(250)
 );
+
+CREATE TABLE Place(
+    id int NOT NULL PRIMARY KEY,
+    rating real,
+    location real NOT NULL
+);
+
