@@ -31,7 +31,8 @@ CREATE TABLE Profile_picture(
     id int PRIMARY KEY,
     profile_id int NOT NULL,
     CONSTRAINT FK_ProfileId FOREIGN KEY (profile_id)
-    REFERENCES Profile(id)
+    REFERENCES Profile(id),
+    path_url varchar(50) NOT NULL
 );
 
 CREATE TABLE Company(
@@ -87,5 +88,14 @@ CREATE TABLE Place(
     id int NOT NULL PRIMARY KEY,
     rating real,
     location real NOT NULL
+);
+
+CREATE TABLE Hobby(
+    id int NOT NULL PRIMARY KEY,
+    profile_id int NOT NULL FOREIGN KEY,
+    CONSTRAINT FK_ProfileId FOREIGN KEY (profile_id)
+    REFERENCES Profile(id),
+    title varchar(50),
+    description varchar(250)
 );
 
