@@ -37,9 +37,6 @@ CREATE TABLE Profile_picture(
 
 CREATE TABLE Company(
     id int NOT NULL PRIMARY KEY,
-    profile_id int NOT NULL,
-    CONSTRAINT FK_ProfileId FOREIGN KEY (profile_id)
-    REFERENCES Profile(id),
     name varchar(100) NOT NULL,
     webpage varchar(100),
     location varchar(50)
@@ -87,6 +84,7 @@ CREATE TABLE Message(
 CREATE TABLE Place(
     id int NOT NULL PRIMARY KEY,
     rating real,
+    location real NOT NULL,
     location real NOT NULL
 );
 
@@ -98,6 +96,7 @@ CREATE TABLE Hobby(
     title varchar(50),
     description varchar(250)
 );
+
 CREATE TABLE Recommended_match{
 	id int NOT NULL PRIMARY KEY,
 	recommended_profile_id int FOREIGN KEY,
@@ -109,6 +108,7 @@ CREATE TABLE Recommended_match{
 	status varchar(1),
 	role_percentage int,
 };
+
 CREATE TABLE Gift{
 	id int NOT NULL PRIMARY KEY,
 	type varchar,
@@ -119,6 +119,7 @@ CREATE TABLE Gift{
     CONSTRAINT FK_ReceiverId FOREIGN KEY (receiver_id) 
     REFERENCES Profile(id),
 };
+
 CREATE TABLE Favorite{
 	id int NOT NULL PRIMARY KEY,
 	title varchar(20),
@@ -135,5 +136,3 @@ CREATE TABLE Rate{
     CONSTRAINT FK_ReceiverId FOREIGN KEY (receiver_id) 
     REFERENCES Profile(id),
 };
-
-
