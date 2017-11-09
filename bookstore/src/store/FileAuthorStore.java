@@ -2,8 +2,8 @@ package store;
 
 import exception.InvalidAuthorException;
 import exception.NoAuthorException;
-import model.Author;
 
+import model.Author;
 import store.layer.AuthorStore;
 
 import java.io.File;

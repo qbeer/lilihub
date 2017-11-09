@@ -6,13 +6,19 @@ import service.MainAuthorService;
 import service.MainBookService;
 import store.FileAuthorStore;
 import store.FileBookStore;
+import store.SqlAuthorStore;
+import store.SqlBookStore;
 
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        MainAuthorService authorService = new MainAuthorService(new FileAuthorStore());
-        MainBookService bookService = new MainBookService(new FileBookStore());
+        //MainAuthorService authorService = new MainAuthorService(new FileAuthorStore());
+        //MainBookService bookService = new MainBookService(new FileBookStore());
+
+        MainAuthorService authorService = new MainAuthorService(new SqlAuthorStore());
+        MainBookService bookService = new MainBookService(new SqlBookStore());
+
 
         Author author = new Author(1, "Aut", "Hor", 1990);
         Book book1 = new Book("Book1", "1234", 1);
@@ -34,7 +40,5 @@ public class Main {
         if (books != null) {
             System.out.println(Arrays.toString(books));
         }
-
-
     }
 }

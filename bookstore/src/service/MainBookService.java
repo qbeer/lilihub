@@ -22,7 +22,7 @@ public class MainBookService implements BookService {
         try {
             books = bookStore.getAllBook();
         } catch (NoBookException e) {
-            System.out.println("There are no books to list.");
+            System.err.println("There are no books to list.");
         }
 
         return books;
@@ -34,7 +34,7 @@ public class MainBookService implements BookService {
         try {
             bookStore.addBook(book);
         } catch (InvalidIsbnException e) {
-            System.out.println(e.getIsbn() + " ISBN number already exists.");
+            System.err.println(e.getIsbn() + " ISBN number already exists.");
         }
 
     }
@@ -47,7 +47,7 @@ public class MainBookService implements BookService {
         try {
             book = bookStore.getBookByIsbn(isbn);
         } catch (NoBookException e) {
-            System.out.println(e.getIsbn() + " ISBN number not exists.");
+            System.err.println(e.getIsbn() + " ISBN number not exists.");
         }
 
         return book;

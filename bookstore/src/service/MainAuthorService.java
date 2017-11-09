@@ -23,7 +23,7 @@ public class MainAuthorService implements AuthorService {
             authors = authorStore.getAllAuthor();
             return authors;
         } catch (NoAuthorException e) {
-            System.out.println("There are no authors to list.");
+            System.err.println("There are no authors to list.");
         }
 
         return authors;
@@ -35,7 +35,7 @@ public class MainAuthorService implements AuthorService {
         try {
             authorStore.addAuthor(author);
         } catch (InvalidAuthorException e) {
-            System.out.println(e.getId() + " ID author already exists.");
+            System.err.println(e.getId() + " ID author already exists.");
         }
 
     }
@@ -47,7 +47,7 @@ public class MainAuthorService implements AuthorService {
         try {
             author = authorStore.getAuthorById(id);
         } catch (NoAuthorException e) {
-            System.out.println(e.getId() + " ID author not exists.");
+            System.err.println(e.getId() + " ID author does not exists.");
         }
 
         return author;
