@@ -9,8 +9,8 @@ package bookstore;
  *
  * @author PNMINH
  */
-public interface AuthorServiceInterface {
-    Author[] getAllAuthors();
-    void addAuthor(Author newAuthor);
-    Author getAuthorByID(int id);
+public interface BookService {
+    Book[] getAllBook();
+    void addBook(Book newBook);
+    Book getBookByISBN(String ISBN);
 }

@@ -12,6 +12,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,8 +21,6 @@ import java.io.IOException;
  */
 public class FileBookStore implements BookStore {
 
-    private Book[] books;
-    private int numberOfBooks;
 
     private void writeToFile(String fileName, Book currentBook) throws IOException {
         FileWriter fileWriter = new FileWriter(fileName);
@@ -28,7 +28,7 @@ public class FileBookStore implements BookStore {
 
         if (currentBook != null) {
             writer.write("Title: " + currentBook.getTitle() + " || ISBN: "
-                    + currentBook.getIsbn() + " || Author ID: " + currentBook.getAuthorID() + "\n");
+                    + currentBook.getIsbn() + " || Author ID: " + currentBook.getAuthorID());
         }
         writer.close();
     }
@@ -44,82 +44,46 @@ public class FileBookStore implements BookStore {
         reader.close();
     }
 
-    public FileBookStore(int size) {
-        books = new Book[size];
-        numberOfBooks = 0;
+    public FileBookStore() {
+        
     }
 
     @Override
     public void addBook(Book newBook) throws InValidISBNException {
-        if (!(newBook.getIsbn() instanceof String)) {
+        if (!(newBook.getIsbn().contains("[a-zA-Z]+") || newBook.getIsbn().length() != 13 || newBook.getIsbn().length() != 10)) {
             throw new InValidISBNException("Not a valid ISBN");
         }
-        if (getNumberOfBooks() >= getBooks().length) {
-            System.out.println("Limit has reached.");
-        }
-        books[numberOfBooks] = newBook;
-        numberOfBooks++;
-        File bookFolder = new File("books/" + newBook.getIsbn());
-        if (!bookFolder.exists()) {
-            bookFolder.mkdirs();
-        }
         try {
-            writeToFile(bookFolder + "\\book.txt", newBook);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+            writeToFile("book.txt", newBook);
+        } 
+        catch (IOException e) {}
     }
 
-    private int lookUpISBN(String isbn) {
-        boolean contains = false;
-        int index = 0;
-        while (index < getBooks().length && !contains) {
-            contains = (getBooks()[index].getIsbn().equals(isbn));
-            index++;
-        }
-        index = (contains) ? index - 1 : -1;
-        return index;
-    }
+   
 
     @Override
     public Book getBookByISBN(String isbn) throws NoBookException {
-        int index = lookUpISBN(isbn);
-        File path = new File("book/" + isbn);
-        if (!path.exists()) {
-            throw new NoBookException("There's no such book");
+        File bookFolder = new File("books/" + isbn);
+        if (!bookFolder.exists()) {
+            throw new NoBookException("No such book exists");
         }
-        return books[index];
+        Book newBook = null;
+        try {
+            FileReader fileReader = new FileReader(bookFolder + "/book.txt");
+            BufferedReader reader = new BufferedReader(fileReader);
+
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                String[] temp = line.split("||");
+                newBook = new Book(temp[0], temp[1], Integer.parseInt(temp[2]));
+            }
+            reader.close();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return newBook;
     }
 
-    /**
-     * @return the numberOfBooks
-     */
-    public int getNumberOfBooks() {
-        return numberOfBooks;
-    }
-
-    /**
-     * @param numberOfBooks the numberOfBooks to set
-     */
-    public void setNumberOfBooks(int numberOfBooks) {
-        this.numberOfBooks = numberOfBooks;
-    }
-
-    /**
-     * @return the books
-     */
-    public Book[] getBooks() {
-        return books;
-    }
-
-    /**
-     * @param books the books to set
-     */
-    public void setBooks(Book[] books) {
-        this.setBooks(books);
-    }
-
-    /**
-     * @return the foundBook
-     */
+   
 }

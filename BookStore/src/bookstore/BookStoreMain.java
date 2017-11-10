@@ -22,12 +22,7 @@ public class BookStoreMain {
         Book book2 = new Book("Motor","345",123);
         Book book3 = new Book("Bike","456",234);
         
-        BookServiceInterfaceImpl bookService = new BookServiceInterfaceImpl(10);
-        bookService.addBook(book1);
-        bookService.addBook(book2);
-        bookService.addBook(book3);
         
-        bookService.getBookByISBN("123");
         
     }
 }

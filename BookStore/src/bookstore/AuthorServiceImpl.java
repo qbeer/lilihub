@@ -9,11 +9,11 @@ package bookstore;
  *
  * @author PNMINH
  */
-public class AuthorServiceInterfaceImpl implements AuthorServiceInterface {
+public class AuthorServiceImpl implements AuthorService {
 
     FileAuthorStore authorStore;
 
-    public AuthorServiceInterfaceImpl(int size) {
+    public AuthorServiceImpl(int size) {
         authorStore = new FileAuthorStore(size);
     }
 

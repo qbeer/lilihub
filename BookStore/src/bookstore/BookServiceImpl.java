@@ -6,27 +6,38 @@
  */
 package bookstore;
 
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author PNMINH
  */
-public class BookServiceInterfaceImpl implements BookServiceInterface {
+public class BookServiceImpl implements BookService {
 
     private FileBookStore bookStore;
 
-    public BookServiceInterfaceImpl(int size) {
-        bookStore = new FileBookStore(size);
+    public BookServiceImpl() {
     }
 
     @Override
-    public Book[] getAllBook() {
-        Book[] books = new Book[bookStore.getNumberOfBooks()];
-        for (int i = 0; i < books.length; i++) {
-            if (bookStore.getBooks()[i] != null) {
-                books[i] = bookStore.getBooks()[i];
+    public Book[] getAllBook() throws NullPointerException {
+        File bookFolder = new File("books");
+        String[] bookList = bookFolder.list();
+        Book[] allBook = new Book[bookList.length];
+        try{
+            for(int i=0;i<allBook.length;i++){
+                allBook[i] = bookStore.getBookByISBN(bookList[i]);
             }
         }
-        return books;
+        catch(NoBookException e){
+            System.out.println(e.getMessage());
+        }
+        catch(NullPointerException e){
+            System.out.println("There is no book in the store");
+        }
+        return allBook;
     }
 
     @Override
@@ -35,6 +46,7 @@ public class BookServiceInterfaceImpl implements BookServiceInterface {
             bookStore.addBook(newBook);
         } catch (InValidISBNException e) {
             System.out.println(e.getMessage());
+
         }
     }
 
@@ -42,12 +54,9 @@ public class BookServiceInterfaceImpl implements BookServiceInterface {
     public Book getBookByISBN(String isbn) {
         Book foundBook = null;
         try {
-            foundBook = bookStore.getBookByISBN(isbn);
+            foundBook =  bookStore.getBookByISBN(isbn);
         } catch (NoBookException e) {
             System.out.println(e.getMessage());
-        }
-        if (foundBook != null) {
-            System.out.println("There's " + foundBook.getTitle() + " in the store");
         }
         return foundBook;
     }
