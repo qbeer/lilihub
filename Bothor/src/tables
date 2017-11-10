@@ -7,7 +7,7 @@ CREATE TABLE Authors(
 );
 
 CREATE TABLE Books(
-  title character varying(50) NOT NULL,
+  title character varying(40) NOT NULL,
   isbn character varying(20) NOT NULL,
   author_id integer NOT NULL,
   CONSTRAINT books_pkey PRIMARY KEY (isbn),
