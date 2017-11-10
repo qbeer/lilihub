@@ -1,0 +1,21 @@
+CREATE TABLE Authors
+(
+  first_name character varying(15) NOT NULL,
+  last_name character varying(15) NOT NULL,
+  id integer NOT NULL,
+  birth_year integer,
+  CONSTRAINT authors_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE Books
+(
+  title character varying(50) NOT NULL,
+  isbn character varying(20) NOT NULL,
+  author_id integer NOT NULL,
+  CONSTRAINT books_pkey PRIMARY KEY (isbn),
+  CONSTRAINT fk_authorid FOREIGN KEY (author_id)
+      REFERENCES public.authors (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
