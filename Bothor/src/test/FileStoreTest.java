@@ -1,3 +1,5 @@
+package test;
+
 import exceptions.*;
 import services.*;
 import store.Author;
@@ -6,7 +8,7 @@ import store.Book;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Main {
+public class FileStoreTest {
 
     public static void main(String[] args) throws InvalidIsbnException, InvalidIdException, NoAuthorsException, NoBooksException, NoAuthorByIdException, NoBookByIsbnException {
 
