@@ -1,5 +1,4 @@
-CREATE TABLE Authors
-(
+CREATE TABLE Authors(
   first_name character varying(15) NOT NULL,
   last_name character varying(15) NOT NULL,
   id integer NOT NULL,
@@ -7,8 +6,7 @@ CREATE TABLE Authors
   CONSTRAINT authors_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE Books
-(
+CREATE TABLE Books(
   title character varying(50) NOT NULL,
   isbn character varying(20) NOT NULL,
   author_id integer NOT NULL,
