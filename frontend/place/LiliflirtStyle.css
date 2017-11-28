@@ -1,0 +1,180 @@
+body {
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.gradient-container {
+    margin: 0;
+    padding: 1.5% .5% .5% .5%;
+    min-height: 900px;
+    background: linear-gradient(grey, whitesmoke, whitesmoke, white);
+}
+
+.container {
+    border: 1px black solid;
+    border-radius: 10px;
+    background-color: white;
+    width: 90%;
+    margin: 30px auto;
+    padding: 3% 5% 3% 5%;
+}
+
+.container h1 {
+    text-align: justify;
+    margin-left: 1%;
+}
+
+.container p {}
+
+.container .or {
+    background: linear-gradient(to bottom right, darkred, crimson, red, darkred);
+    margin: 20px auto;
+    border-radius: 70px;
+    width: 7%;
+    font-size: 20px;
+}
+
+ul {
+    margin: 0;
+    padding: 0
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: justify;
+}
+
+header {
+    position: relative;
+    padding: 0;
+    background: linear-gradient(to bottom right, darkred, crimson, red, darkred);
+    border-radius: 20px;
+    min-height: 100px;
+    max-height: 150px;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.logo-header {
+    float: left;
+    margin-right: 20%;
+    margin-left: -20%;
+}
+
+.logo {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.nav-icons {
+    width: 17%;
+    visibility: visible;
+}
+
+nav {
+    float: left;
+    width: 40%;
+    margin-right: -15%;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    display: inline;
+    text-decoration: none;
+}
+
+.icons {
+    display: inline;
+    position: relative;
+	height: 30px;
+	width: 30px;
+}
+img{
+	height: 10px;
+	width: 10px;
+}
+
+.icons .icon-text {
+    width: 250%;
+    border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+    visibility: hidden;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+    opacity: .85;
+    z-index: 1;
+    top: 150%;
+    left: -50%;
+}
+
+.icons:hover .icon-text {
+    visibility: visible;
+}
+
+#automatch {
+    padding: 4% auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    min-height: 120px;
+    background: linear-gradient(to bottom right, darkred, crimson, red, darkred);
+    text-align: center;
+    color: black;
+    width: 65%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+#automatch button {
+    text-align: center;
+    font-size: 35px;
+    border-radius: 10px;
+}
+
+#filter {
+    min-height: 200px;
+    padding: 2% 2% 5% 3%;
+    background: linear-gradient(to bottom right, darkred, crimson, red, darkred);
+    color: black;
+    width: 75%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+#filter h1 {
+    font-size: 30px;
+    font-family: cursive;
+    color: beige;
+}
