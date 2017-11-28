@@ -79,7 +79,10 @@ header {
 }
 
 .logo {
-    width: 50%;
+	margin: 15;
+	padding: 0;
+    width: 150px;
+	height: 50px;
     border-radius: 10px;
 }
 
